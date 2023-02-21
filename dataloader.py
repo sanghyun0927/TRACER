@@ -34,6 +34,7 @@ class DatasetGenerate(Dataset):
     def __getitem__(self, idx):
         image = cv2.imread(self.images[idx])
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        print(self.gts[idx])
         mask = cv2.imread(self.gts[idx])
         mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
         edge = cv2.imread(self.edges[idx])

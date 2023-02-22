@@ -1,4 +1,5 @@
 import cv2
+from PIL import Image
 import glob
 import torch
 import numpy as np
@@ -34,9 +35,8 @@ class DatasetGenerate(Dataset):
     def __getitem__(self, idx):
         image = cv2.imread(self.images[idx])
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        print(self.gts[idx])
-        mask = cv2.imread(self.gts[idx])
-        mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+        mask = np.array(Image.open(self.gts[idx]))
+        mask = np.array(mask) * 255
         edge = cv2.imread(self.edges[idx])
         edge = cv2.cvtColor(edge, cv2.COLOR_BGR2GRAY)
 

@@ -19,7 +19,7 @@ class DatasetGenerate(Dataset):
 
         train_images, val_images, train_gts, val_gts, train_edges, val_edges = train_test_split(self.images, self.gts,
                                                                                                 self.edges,
-                                                                                                test_size=0.01,
+                                                                                                test_size=0.05,
                                                                                                 random_state=seed)
         if phase == 'train':
             self.images = train_images
